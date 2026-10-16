@@ -115,11 +115,11 @@ Medically: nothing remembered.     Medically: nothing remembered.</pre>
     <p class="lead">Per-vendor memory locks your context inside one model's account. SAIHM is a layer you own — portable, provably erasable, and shareable between agents.</p>
     <table class="matrix">
       <tr><th>Capability</th><th>Built-in model memory</th><th>SAIHM</th></tr>
-      <tr><td>Portable across models — one live store, not a lossy manual import</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+      <tr><td>Portable across models — one live store, with no manual export and import</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
       <tr><td>Cryptographically provable erasure (crypto-shred, GDPR Art. 17)</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
       <tr><td>Shareable to other agents, end-to-end authenticated</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
-      <tr><td>Operator holds no key — non-custodial, not just encrypted at rest</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
-      <tr><td>Tamper-evident — each cell's integrity is anchored on-chain (live service)</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+      <tr><td>Operator holds no key — non-custodial</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
+      <tr><td>Tamper-evident — every cell is signed, so a changed cell fails verification (live service)</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
       <tr><td>Post-quantum cryptography (ML-DSA-65 / ML-KEM-768)</td><td class="c no">✗</td><td class="c yes">✓</td></tr>
     </table>
   </div>
@@ -143,12 +143,12 @@ Medically: nothing remembered.     Medically: nothing remembered.</pre>
 <section id="models">
   <div class="wrap">
     <h2>Pick your model — one repo each, runnable in a minute</h2>
-    <p class="lead">A dedicated demo for each model. Every one runs offline against an included sandbox — no account needed to try it — or grounds a live answer with your own key. The memory is identical — that's the point: it's portable across all of them.</p>
+    <p class="lead">A dedicated demo for each model. Every one runs offline against an included sandbox — no account needed to try it — or grounds a live answer with your own key. Every demo uses the same memory, so it carries across all of them.</p>
     <div class="grid cards">
       <div class="card"><h3>Claude · <a href="https://github.com/SAIHM-Admin/demo-claude">demo-claude →</a></h3><p class="pain">Ground Claude in a memory you own, then carry the same store to every other model.</p>
         <div class="snip"><pre>git clone https://github.com/SAIHM-Admin/demo-claude
 cd demo-claude &amp;&amp; npm install &amp;&amp; node demo.mjs</pre><button>Copy</button></div></div>
-      <div class="card"><h3>GPT · <a href="https://github.com/SAIHM-Admin/demo-openai">demo-openai →</a></h3><p class="pain">A memory layer GPT can read — one you hold the keys to, not your OpenAI account.</p>
+      <div class="card"><h3>GPT · <a href="https://github.com/SAIHM-Admin/demo-openai">demo-openai →</a></h3><p class="pain">A memory layer GPT can read, and you hold its keys.</p>
         <div class="snip"><pre>git clone https://github.com/SAIHM-Admin/demo-openai
 cd demo-openai &amp;&amp; npm install &amp;&amp; node demo.mjs</pre><button>Copy</button></div></div>
       <div class="card"><h3>DeepSeek · <a href="https://github.com/SAIHM-Admin/demo-deepseek">demo-deepseek →</a></h3><p class="pain">Seal three facts client-side, ground DeepSeek in them, then prove you can erase one.</p>
@@ -198,7 +198,7 @@ pip install -r requirements.txt &amp;&amp; python demo.py</pre><button>Copy</but
 cd saihm-rag &amp;&amp; npm install
 python3 -m venv .venv &amp;&amp; . .venv/bin/activate
 pip install -r requirements.txt &amp;&amp; python demo.py</pre><button>Copy</button></div></div>
-      <div class="card"><h3>Erasure receipt · <a href="https://github.com/SAIHM-Admin/saihm-erasure-receipt-demo">saihm-erasure-receipt-demo →</a></h3><p class="pain">Prove a record was erased, not hidden — destroy its key and emit a verifiable cryptographic-erasure receipt (GDPR Art. 17).</p>
+      <div class="card"><h3>Erasure receipt · <a href="https://github.com/SAIHM-Admin/saihm-erasure-receipt-demo">saihm-erasure-receipt-demo →</a></h3><p class="pain">Prove a record was erased by destroying its key and emitting a verifiable cryptographic-erasure receipt (GDPR Art. 17).</p>
         <div class="snip"><pre>git clone https://github.com/SAIHM-Admin/saihm-erasure-receipt-demo
 cd saihm-erasure-receipt-demo &amp;&amp; npm install
 node demo.mjs</pre><button>Copy</button></div></div>
@@ -224,7 +224,7 @@ node benchmark.mjs --file your-session.json   # run it on your own transcript</p
     <h2>How it works</h2>
     <div class="grid steps">
       <div class="step"><b>1 · Seal on the client</b><p>Your master secret derives a post-quantum identity and a key-encryption key. Every cell is signed (ML-DSA-65) and encrypted (AES-256-GCM) before it leaves your process.</p></div>
-      <div class="step"><b>2 · Store blind</b><p>Only opaque ciphertext is sent. The endpoint stores it, anchors each cell's integrity on-chain, and meters usage — all without ever holding a key, so it cannot read your memory.</p></div>
+      <div class="step"><b>2 · Store blind</b><p>Only opaque ciphertext is sent. The endpoint stores it and meters usage, all without ever holding a key, so it cannot read your memory.</p></div>
       <div class="step"><b>3 · Crypto-shred to forget</b><p><code>forget</code> destroys the wrapped key. The ciphertext becomes unrecoverable noise — erasure you can prove, for every model at once.</p></div>
     </div>
   </div>
