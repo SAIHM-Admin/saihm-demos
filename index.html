@@ -61,6 +61,8 @@
   footer{padding:44px 0 70px;border-top:1px solid var(--line);color:var(--muted)}
   footer .links{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 18px}
   .note{font-size:13px;color:var(--bad)}
+  .video{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#000}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 </style>
 </head>
 <body>
@@ -75,6 +77,17 @@
     </div>
   </div>
 </header>
+
+<section id="watch">
+  <div class="wrap">
+    <h2>Watch the SAIHM Detailed Overview</h2>
+    <p class="lead">A 30-minute tour of SAIHM from the SAIHM channel.</p>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/t3rXudDKank" title="SAIHM Detailed Overview" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <p><a href="https://www.youtube.com/watch?v=t3rXudDKank">Watch it on YouTube</a></p>
+  </div>
+</section>
 
 <section id="wow">
   <div class="wrap">
